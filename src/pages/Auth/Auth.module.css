@@ -1,0 +1,19 @@
+
+.heading{
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--themeColor);
+}
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    width: 500px;
+    /* height: 300px; */
+    box-shadow: 0 0 1px 0 black;
+    border-radius: var(--br);
+    padding: 20px;
+}

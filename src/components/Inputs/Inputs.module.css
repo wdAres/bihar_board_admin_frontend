@@ -1,0 +1,47 @@
+.container label {
+    font-weight: 500;
+}
+
+.horizontal_call label {
+    width: 20%;
+}
+
+/* .container textareA {
+    width: 20%;
+    font-weight: 500;
+} */
+
+.vertical_class {}
+
+.horizontal_call {}
+
+.horizontal_call input,
+.horizontal_call .select,
+.horizontal_call .textarea,
+.horizontal_call .upload {
+    width: calc(100% - 20%);
+}
+
+@media screen and (max-width:600px) {
+
+    .horizontal_call input,
+    .horizontal_call .select,
+    .horizontal_call .textarea,
+    .horizontal_call .upload {
+        width: 100%;
+    }
+
+    .container label {
+
+        width: 100%;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .container .switch{
+        width: max-content;
+    }
+
+}

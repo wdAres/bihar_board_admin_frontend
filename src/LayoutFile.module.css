@@ -1,0 +1,28 @@
+.layout {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.menu {
+    border: none !important;
+}
+
+.main_layout{
+    width: calc(100%-220px);
+
+    @media (width<=1000px){
+        width: 100%;
+    }
+}
+
+.content {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.header {
+    background: white;
+}

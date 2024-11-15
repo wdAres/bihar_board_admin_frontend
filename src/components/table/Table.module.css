@@ -1,0 +1,16 @@
+.table{
+    background: white;
+    overflow: scroll;
+    /* max-width: 100%; */
+}
+
+.sale_table_title{
+    font-size: 13px;
+}
+.sale_table_sub_title{
+    font-size: 10px;
+    color: var(--color_brown);
+}
+
+@media (width<1000px){
+}

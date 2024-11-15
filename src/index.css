@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* GLOBAL VARIABLE */
+
+:root {
+
+  /* red */
+  --color_brown: #ae0000;
+  /* blue */
+  --color_blue: #4543AE;
+  --color_blue_bg:#DEDEFA;
+  --color_blue_border: #E0E2E7 ;
+
+  /* black */
+  --color_black_1: #667085;
+  --color_black_2: #333843;
+
+  /* border radius */
+  --borderRadius: 6px;
+}
+
+
+
+/* universal flex classes */
+
+
+.d_flex{
+  display: flex;
+}
+.row{
+  flex-direction: row;
+}
+.column{
+  flex-direction: column;
+}
+.jcb{
+  justify-content: space-between;
+}
+.aic{
+  align-items: center;
+}
+
+/* Red Green Status */
+
+.status{
+  width: max-content;
+  border-radius: var(--borderRadius);
+}
+
+.red_status{
+  color: #F04438;
+  background: #FEEDEC;
+}
+
+.green_status{
+  color: #0D894F;
+  background: #E7F4EE;
+}
+
+/* Active link  */
+
+.active{
+  background: var(--color_brown);
+  color: white !important;
+}
+
+/* Hide Scollbars from div */
+
+div::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+div,
+main{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+@media (max-width:1000px) {
+  .row{
+    flex-direction: column;
+  }
+  .aic{
+    align-items: flex-start;
+  }
+}

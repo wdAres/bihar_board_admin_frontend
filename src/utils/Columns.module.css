@@ -1,0 +1,21 @@
+.sale_table_title{
+    font-size: 13px;
+}
+.sale_table_sub_title{
+    font-size: 12px;
+    color: var(--color_brown) !important;
+    font-weight: 500 !important;
+}
+.add_link_table_action{
+    color: var(--color_blue);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    padding:0 ;
+    transition: 0.2s all;
+}
+.add_link_table_action:hover{
+    background: transparent;
+    color: var(--color_brown);
+    cursor: pointer;
+}
