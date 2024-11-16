@@ -11,58 +11,28 @@ function Sidebar({ sidebar, handleSidebar }) {
     const linksArr = [
         {
             key: '01',
-            icon: <IoGridOutline size={14} />,
-            label: 'Dahboard',
-            link: '/'
+            icon: <IoBagOutline size={14} />,
+            label: 'School List',
+            link: '/school'
         },
         {
             key: '02',
             icon: <IoBagOutline size={14} />,
-            label: 'Products',
-            link: '/product'
+            label: 'Contacts',
+            link: '/contacts'
         },
         {
-            key: '02',
-            icon: <IoBagOutline size={14} />,
-            label: 'Category',
-            link: '/category'
+            key: '03',
+            icon: <BsCash size={14} />,
+            label: 'Inquiries',
+            link: '/inquiries'
         },
         {
             key: '04',
             icon: <BsCash size={14} />,
-            label: 'Payment',
-            link: '/payments'
-        },
-        {
-            key: '06',
-            icon: <SlSupport size={14} />,
-            label: 'Orders',
-            link: '/order'
-        },
-        {
-            key: '06',
-            icon: <SlSupport size={14} />,
-            label: 'Customers',
-            link: '/customers'
-        },
-        {
-            key: '05',
-            icon: <SlSupport size={14} />,
-            label: 'Home Banner',
-            link: '/home-banner'
-        },
-        {
-            key: '05',
-            icon: <SlSupport size={14} />,
-            label: 'Home Slider',
-            link: '/home-slider'
-        },
-        {
-            key: '05',
-            icon: <SlSupport size={14} />,
-            label: 'Support',
-            link: '/support'
-        },
+            label: 'Updates',
+            link: '/updates'
+        }
     ]
 
     const cssObject = sidebar ? { left: '0' } : {}

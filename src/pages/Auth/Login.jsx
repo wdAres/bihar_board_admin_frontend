@@ -49,7 +49,7 @@ const Login = () => {
             body: values
         }, result => {
             Cookies.set('admin', JSON.stringify({user:result.data.user , token:result.token}))
-            navigate('/')
+            navigate('/school')
         }, true)
     };
 

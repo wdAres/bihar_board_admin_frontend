@@ -6,6 +6,11 @@ import Login from './pages/Auth/Login'
 import Signup from './pages/Auth/Signup'
 import Forget from './pages/Auth/Forget'
 import Schools from './pages/Schools/Schools'
+import Contact from './pages/Contact/Contact'
+import Inquiry from './pages/Inquiry/Inquiry'
+import Notice from './pages/Notice/Notice'
+import AddSchool from './pages/Schools/Additional/AddSchool'
+import AddStudent from './pages/Schools copy/Additional/AddStudent'
 
 
 const someLinks = ['/login', '/signup', '/forget', '/admin_login/:resetToken']
@@ -33,7 +38,17 @@ function App() {
           :
           <LayoutFile>
             <Routes>
-              <Route path='/' element={<Schools />} />
+              <Route path='/school'  >
+                <Route index element={<Schools />} />
+                <Route path='/school/add' element={<AddSchool />} />
+              </Route>
+              <Route path='/student'  >
+                <Route index element={<Schools />} />
+                <Route path='/student/add' element={<AddStudent />} />
+              </Route>
+              <Route path='/contacts' element={<Contact />} />
+              <Route path='/inquiries' element={<Inquiry />} />
+              <Route path='/updates' element={<Notice />} />
             </Routes>
           </LayoutFile>
       }

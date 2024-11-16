@@ -4,11 +4,11 @@ import useHttp2 from '../../hooks/useHttp2'
 import PageHeader from '../../components/UI/PageHeader'
 import MyTable from '../../components/table/MyTable'
 import MyPagination from '../../components/table/MyPagination'
-import { schoolColumn } from '../../utils/Columns'
+import { inquiryColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
 
 
-const Schools = () => {
+const Inquiry = () => {
 
   const [date, setDate] = useState(new Date())
   const [query, setQuery] = useState('')
@@ -37,10 +37,9 @@ const Schools = () => {
   const navigate = useNavigate()
 
   const getData = () => {
-    console.log('we are here')
     sendRequest({
-      url: `center`
-        // url: `centers?limit=${limit}&page=${page}&search=${query}`
+      url: `centers`
+    //   url: `centers?limit=${limit}&page=${page}&search=${query}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -48,25 +47,17 @@ const Schools = () => {
   }
 
   useEffect(() => {
-    getData()
+    // getData()
   }, [limit, page, query])
 
   useEffect(() => {
     setPage(1)
   }, [query])
 
+  
 
-  const handleActive = (id, activeStatus) => {
-    sendRequest({
-      url: `center/${id}/edit`,
-      method: 'PUT',
-      body: { active: !activeStatus }
-    }, result => {
-      getData()
-    }, true)
-  }
 
-  const columns = schoolColumn(handleActive)
+  const columns = inquiryColumn()
 
   return (
     <>
@@ -77,8 +68,7 @@ const Schools = () => {
           rowGap: 25
         }}
       >
-        <PageHeader heading={'School List'} />
-        <SearchBar func={setQuery} value={query} placeholder={'Search Schools by name'} />
+        <PageHeader heading={'Inquiries'} />
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
         <MyTable data={data} columns={columns} />
@@ -88,4 +78,4 @@ const Schools = () => {
   )
 }
 
-export default Schools
+export default Inquiry

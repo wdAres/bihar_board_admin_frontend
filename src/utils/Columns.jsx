@@ -368,7 +368,7 @@ export const categoryColumns = (handleView, handleDelete) => ([
     render: (_, { createdAt }) => (
       moment(createdAt).format('YYYY-MM-DD')
     ),
-    align:'center'
+    align: 'center'
   },
   {
     title: 'Action',
@@ -384,7 +384,7 @@ export const categoryColumns = (handleView, handleDelete) => ([
 
 
 // export product column 
-export const productColumn = (handleView, handleDelete,handleActive) => ([
+export const productColumn = (handleView, handleDelete, handleActive) => ([
   {
     title: 'Banner',
     render: (_, { banner }) => (
@@ -415,7 +415,7 @@ export const productColumn = (handleView, handleDelete,handleActive) => ([
   {
     title: 'Price',
     key: 'price',
-    render:({_,price})=>(
+    render: ({ _, price }) => (
       <p>${price}</p>
     )
   },
@@ -468,7 +468,7 @@ export const orderColumn = (handleView) => ([
   {
     title: 'Customer',
     key: 'customer',
-    render:({_,customer_name,customer_id})=>(
+    render: ({ _, customer_name, customer_id }) => (
       GeneralTableCard({ title: customer_name, sub_title: customer_id })
     )
   },
@@ -485,7 +485,7 @@ export const orderColumn = (handleView) => ([
   {
     title: 'total',
     key: 'total',
-    render:({_,total})=>(
+    render: ({ _, total }) => (
       <p>${total}</p>
     )
   },
@@ -499,7 +499,7 @@ export const orderColumn = (handleView) => ([
   {
     title: 'Action',
     render: (_, { _id }) => (
-        <Button type='default' shape="circle" onClick={() => handleView(_id)} ><FaEdit size={16} /></Button>
+      <Button type='default' shape="circle" onClick={() => handleView(_id)} ><FaEdit size={16} /></Button>
     ),
     align: 'center',
   }
@@ -507,25 +507,25 @@ export const orderColumn = (handleView) => ([
 
 // export order column 
 export const customerColumn = (handleActive) => ([
-  
+
   {
     title: 'Customer',
     key: 'customer',
-    render:({_,name,email,profileUrl})=>(
-      GeneralTableCard({ title: name, sub_title: email , profileUrl })
+    render: ({ _, name, email, profileUrl }) => (
+      GeneralTableCard({ title: name, sub_title: email, profileUrl })
     )
   },
   {
     title: 'Phone',
     key: 'phone',
     dataIndex: 'phone',
-    align:'center'
+    align: 'center'
   },
   {
     title: 'VB ID',
     key: 'vbID',
     dataIndex: 'vbID',
-    align:'center'
+    align: 'center'
   },
   {
     title: 'Active',
@@ -533,7 +533,7 @@ export const customerColumn = (handleActive) => ([
     render: (_, { _id, active }) => (
       <Switch onChange={handleActive.bind(this, _id, active)} defaultChecked={active} />
     ),
-    align:'center'
+    align: 'center'
   },
   {
     title: 'Added On',
@@ -541,12 +541,12 @@ export const customerColumn = (handleActive) => ([
     render: (_, { createdAt }) => (
       moment(createdAt).format('YYYY-MM-DD')
     ),
-    align:'center'
+    align: 'center'
   }
 ])
 
 // export product column 
-export const couponColumn = (handleView, handleDelete,handleActive) => ([
+export const couponColumn = (handleView, handleDelete, handleActive) => ([
   {
     title: 'Label',
     dataIndex: 'couponLabel',
@@ -631,7 +631,7 @@ export const sliderColumns = (handleView, handleDelete) => ([
     render: (_, { createdAt }) => (
       moment(createdAt).format('YYYY-MM-DD')
     ),
-    align:'center'
+    align: 'center'
   },
   {
     title: 'Action',
@@ -653,7 +653,7 @@ export const notificationColumns = (handleView) => ([
     key: 'subject',
     dataIndex: 'subject',
   },
-  
+
   {
     title: 'Description',
     key: 'description',
@@ -665,11 +665,148 @@ export const notificationColumns = (handleView) => ([
     render: (_, { createdAt }) => (
       moment(createdAt).format('YYYY-MM-DD')
     ),
-    align:'center'
+    align: 'center'
   },
 ])
 
+//????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????//
+
 
 export const schoolColumn = (handleActive) => ([
-  
+  {
+    title: 'School',
+    key: 'school',
+    render: ({ _, school_name, email }) => (
+      GeneralTableCard({ title: school_name, sub_title: email })
+    )
+  },
+  {
+    title: 'School Mobile',
+    key: 'school_mobile_no',
+    dataIndex: 'school_mobile_no',
+    align: 'center'
+  },
+  {
+    title: 'School District',
+    key: 'school_district',
+    dataIndex: 'school_district',
+    align: 'center'
+  },
+
+  {
+    title: 'School Pincode',
+    key: 'school_pincode',
+    dataIndex: 'school_pincode',
+    align: 'center'
+  },
+  {
+    title: 'School Level',
+    key: 'school_level',
+    dataIndex: 'school_level',
+    align: 'center'
+  },
+  {
+    title: 'Active',
+    key: 'active',
+    render: (_, { _id, active }) => (
+      <Switch onChange={handleActive.bind(this, _id, active)} defaultChecked={active} />
+    ),
+    align: 'center'
+  },
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    render: (_, { createdAt }) => (
+      moment(createdAt).format('YYYY-MM-DD')
+    ),
+    align: 'center'
+  }
+])
+
+export const contactColumn = () => ([
+  {
+    title: 'Name',
+    key: 'name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Email',
+    key: 'email',
+    dataIndex: 'email',
+  },
+  {
+    title: 'Subject',
+    key: 'subject',
+    dataIndex: 'subject',
+  },
+  {
+    title: 'Message',
+    key: 'message',
+    dataIndex: 'message',
+  },
+
+])
+
+export const inquiryColumn = () => ([
+  {
+    title: 'Name',
+    key: 'name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Email',
+    key: 'email',
+    dataIndex: 'email',
+  },
+  {
+    title: 'Message',
+    key: 'message',
+    dataIndex: 'message',
+  },
+
+])
+
+export const noticeBoardColumn = (handleView, handleDelete) => ([
+  {
+    title: 'Label',
+    key: 'label',
+    dataIndex: 'label',
+  },
+  {
+    title: 'Attachment',
+    key: 'fileUrl',
+    render: (_, { fileUrl }) => (
+      <a href={fileUrl} target="_blank" download={true}>Download</a>
+    ),
+    align: 'center'
+  },
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    render: (_, { createdAt }) => (
+      moment(createdAt).format('YYYY-MM-DD')
+    ),
+    align: 'center'
+  },
+  {
+    title: 'Action',
+    render: (_, { id }) => (
+      <Space>
+        <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEdit size={16} /></Button>
+        <Popconfirm
+          title="Delete"
+          description="Are you sure to delete this?"
+          onConfirm={() => handleDelete(_id)}
+          onCancel={cancel}
+          okText="Yes"
+          cancelText="No"
+          placement="topRight"
+        >
+          <Button type='default' shape="circle" ><RiDeleteBin6Line size={16} /></Button>
+        </Popconfirm>
+      </Space>
+    ),
+    align: 'center',
+  }
+
 ])
