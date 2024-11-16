@@ -38,8 +38,7 @@ const Contact = () => {
 
   const getData = () => {
     sendRequest({
-      url: `contact`
-    //   url: `centers?limit=${limit}&page=${page}&search=${query}`
+      url: `contact?limit=${limit}&page=${page}&search=${query}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -71,7 +70,7 @@ const Contact = () => {
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
         <MyTable data={data} columns={columns} />
-        {/* <MyPagination {...paginationObject} /> */}
+        <MyPagination {...paginationObject} />
       </div>
     </>
   )

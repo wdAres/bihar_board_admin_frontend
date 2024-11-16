@@ -38,8 +38,8 @@ const Inquiry = () => {
 
   const getData = () => {
     sendRequest({
-      url: `centers`
-    //   url: `centers?limit=${limit}&page=${page}&search=${query}`
+      // url: `centers`
+      url: `inquiry?limit=${limit}&page=${page}&search=${query}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -47,7 +47,7 @@ const Inquiry = () => {
   }
 
   useEffect(() => {
-    // getData()
+    getData()
   }, [limit, page, query])
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const Inquiry = () => {
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
         <MyTable data={data} columns={columns} />
-        {/* <MyPagination {...paginationObject} /> */}
+        <MyPagination {...paginationObject} />
       </div>
     </>
   )
