@@ -1,8 +1,9 @@
 import React from 'react'
-import { Card, Input, Select } from 'antd'
+import { Button, Card, Input, Select, Upload } from 'antd'
 import classes from './Component.module.css'
 import FormItem from '../../../../components/FormItem/FormItem'
-const Notice_Info = () => {
+import MyUpload from '../../../../components/MyUpload/MyUpload'
+const Notice_Info = ({handleChange}) => {
 
     const inputFields = [
         {
@@ -14,10 +15,15 @@ const Notice_Info = () => {
         {
             label: 'Attachment',
             name: 'file',
-            rules: [{ required: true }],
-            element: (data) => <Input {...data} />
+            rules: [{ required: false }],
+            dataObj:{
+                maxCount:1
+            },
+            element: (data) =>  <Upload   beforeUpload={file=>false} {...data}>
+            <Button >Click to Upload</Button>
+          </Upload>
         }
-    ]
+        ]
     return (
         <Card
             size="small"

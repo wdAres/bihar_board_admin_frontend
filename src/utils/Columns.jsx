@@ -1,4 +1,4 @@
-import { Button, Flex, Image, message, Popconfirm, Space, Switch, Tag } from "antd";
+import { Button, Flex, Image, message, Popconfirm, Space, Switch, Tag, Tooltip } from "antd";
 import GeneralTableCard from "../components/cards/GeneralTableCard";
 import classes from './Columns.module.css'
 import { MdOutlineRemoveRedEye } from "react-icons/md";
@@ -705,14 +705,14 @@ export const schoolColumn = (handleActive) => ([
     dataIndex: 'school_level',
     align: 'center'
   },
-  {
-    title: 'Active',
-    key: 'active',
-    render: (_, { _id, active }) => (
-      <Switch onChange={handleActive.bind(this, _id, active)} defaultChecked={active} />
-    ),
-    align: 'center'
-  },
+  // {
+  //   title: 'Active',
+  //   key: 'active',
+  //   render: (_, { _id, active }) => (
+  //     <Switch onChange={handleActive.bind(this, _id, active)} defaultChecked={active} />
+  //   ),
+  //   align: 'center'
+  // },
   {
     title: 'Created At',
     dataIndex: 'createdAt',
@@ -737,14 +737,23 @@ export const contactColumn = () => ([
   {
     title: 'Subject',
     key: 'subject',
-    dataIndex: 'subject',
+    ellipsis: {
+      showTitle: false,
+    },
+    render: ({ subject }) => (
+      <Tooltip placement="topLeft" title={subject}>
+        {subject ? subject : '--'}
+      </Tooltip>
+    ),
   },
   {
     title: 'Message',
     key: 'message',
-    dataIndex: 'message',
-  },
-
+    ellipsis: {
+      showTitle: true,
+    },
+    dataIndex: 'message'
+  }
 ])
 
 export const inquiryColumn = () => ([
@@ -761,8 +770,11 @@ export const inquiryColumn = () => ([
   {
     title: 'Message',
     key: 'message',
-    dataIndex: 'message',
-  },
+    ellipsis: {
+      showTitle: true,
+    },
+    dataIndex: 'message'
+  }
 
 ])
 
@@ -796,7 +808,7 @@ export const noticeBoardColumn = (handleView, handleDelete) => ([
         <Popconfirm
           title="Delete"
           description="Are you sure to delete this?"
-          onConfirm={() => handleDelete(_id)}
+          onConfirm={() => handleDelete(id)}
           onCancel={cancel}
           okText="Yes"
           cancelText="No"
@@ -809,4 +821,49 @@ export const noticeBoardColumn = (handleView, handleDelete) => ([
     align: 'center',
   }
 
+])
+
+export const studentColumn = (handleView) => ([
+  {
+    title: 'Student',
+    key: 'student',
+    render: ({ _, student_name, student_email , student_photo }) => (
+      GeneralTableCard({ title: student_name, sub_title: student_email,img:student_photo })
+    )
+  },
+  {
+    title: 'Student Mobile',
+    key: 'student_mobile_number',
+    dataIndex: 'student_mobile_number',
+    align: 'center'
+  },
+  {
+    title: 'Student Father',
+    key: 'student_father_name',
+    dataIndex: 'student_father_name',
+    align: 'center'
+  },
+  {
+    title: 'Student Mother',
+    key: 'student_mother_name',
+    dataIndex: 'student_mother_name',
+    align: 'center'
+  },
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    render: (_, { createdAt }) => (
+      moment(createdAt).format('YYYY-MM-DD')
+    ),
+    align: 'center'
+  },
+  {
+    title: 'Action',
+    render: (_, { id }) => (
+      <Space>
+        <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEdit size={16} /></Button>
+      </Space>
+    ),
+    align: 'center',
+  }
 ])

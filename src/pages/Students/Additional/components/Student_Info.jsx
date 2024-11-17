@@ -6,9 +6,11 @@ const S_Info = () => {
 
     const inputFields = [
             { label: 'Student Name', name: 'student_name', rules: [{ required: true }], element: (data) => <Input {...data} /> },
+            { label: 'Student Email', name: 'student_email', rules: [{ required: true, type: 'email' }], element: (data) => <Input {...data} /> },
+            { label: 'Student Mobile Number', name: 'student_mobile_number', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Father Name', name: 'student_father_name', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Mother Name', name: 'student_mother_name', rules: [{ required: true }], element: (data) => <Input {...data} /> },
-            { label: 'Date of Birth in Figures', name: 'dob_in_figures', rules: [{ required: true }], element: (data) => <DatePicker {...data} /> },
+            // { label: 'Date of Birth in Figures', name: 'dob_in_figures', rules: [{ required: true }], element: (data) => <DatePicker {...data} /> },
             { label: 'Date of Birth in Words', name: 'dob_in_words', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             {
                 label: 'Additional Subject',
@@ -61,8 +63,6 @@ const S_Info = () => {
             { label: 'Student Address Pin', name: 'student_address_pin', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Address PS', name: 'student_address_ps', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Address District', name: 'student_address_dist', rules: [{ required: true }], element: (data) => <Input {...data} /> },
-            { label: 'Student Email', name: 'student_email', rules: [{ required: true, type: 'email' }], element: (data) => <Input {...data} /> },
-            { label: 'Student Mobile Number', name: 'student_mobile_number', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Aadhar Number', name: 'student_aadhar_number', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             {
                 label: 'Nationality',

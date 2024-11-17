@@ -37,9 +37,11 @@ const Contact = () => {
   const navigate = useNavigate()
 
   const getData = () => {
+    console.log('we are here')
     sendRequest({
       url: `contact?limit=${limit}&page=${page}&search=${query}`
     }, result => {
+      console.log(result.data.docs)
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
     })

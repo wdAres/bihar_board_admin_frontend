@@ -6,6 +6,8 @@ import MyTable from '../../components/table/MyTable'
 import MyPagination from '../../components/table/MyPagination'
 import { inquiryColumn, noticeBoardColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
+import { FaPlus } from 'react-icons/fa'
+import { Button } from 'antd'
 
 
 const Notice = () => {
@@ -38,8 +40,8 @@ const Notice = () => {
 
     const getData = () => {
         sendRequest({
-            url: `centers`
-            //   url: `centers?limit=${limit}&page=${page}&search=${query}`
+            // url: `centers`
+            url: `notices?limit=${limit}&page=${page}&search=${query}`
         }, result => {
             setData(result.data.docs)
             setPageDetails({ ...result.data, docs: [] })
@@ -47,17 +49,24 @@ const Notice = () => {
     }
 
     useEffect(() => {
-        // getData()
+        getData()
     }, [limit, page, query])
 
     useEffect(() => {
         setPage(1)
     }, [query])
 
+    const handleDelete = (id) => {
+        sendRequest({
+            url: `notices/${id}`,
+            method: 'DELETE'
+        }, result => {
+            getData()
+        },true)
+    }
 
 
-
-    const columns = noticeBoardColumn()
+    const columns = noticeBoardColumn((id) => navigate(`edit/${id}`), handleDelete)
 
     return (
         <>
@@ -68,11 +77,13 @@ const Notice = () => {
                     rowGap: 25
                 }}
             >
-                <PageHeader heading={'Updates'} />
+                <PageHeader heading={'Updates'} >
+                    <Button onClick={() => navigate('add')} type='primary' icon={<FaPlus />}  >Add Update</Button>
+                </PageHeader>
                 <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
                     {pageDetails?.totalDocs ?? 0} Results</h4>
                 <MyTable data={data} columns={columns} />
-                {/* <MyPagination {...paginationObject} /> */}
+                <MyPagination {...paginationObject} />
             </div>
         </>
     )

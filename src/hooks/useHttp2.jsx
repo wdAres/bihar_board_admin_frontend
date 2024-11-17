@@ -27,7 +27,7 @@ const useHttp2 = () => {
 
             const resp = await req.json()
 
-            if (resp.status !== 'success') {
+            if (!resp.success) {
                 setError(resp)
                 throw new Error(resp.message)
             }

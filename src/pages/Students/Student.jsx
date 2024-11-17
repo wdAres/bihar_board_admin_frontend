@@ -4,11 +4,13 @@ import useHttp2 from '../../hooks/useHttp2'
 import PageHeader from '../../components/UI/PageHeader'
 import MyTable from '../../components/table/MyTable'
 import MyPagination from '../../components/table/MyPagination'
-import { schoolColumn } from '../../utils/Columns'
+import { schoolColumn, studentColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
+import { FaPlus } from 'react-icons/fa'
+import { Button } from 'antd'
 
 
-const Schools = () => {
+const Students = () => {
 
   const [date, setDate] = useState(new Date())
   const [query, setQuery] = useState('')
@@ -37,10 +39,8 @@ const Schools = () => {
   const navigate = useNavigate()
 
   const getData = () => {
-    console.log('we are here')
     sendRequest({
-      url: `center`
-        // url: `centers?limit=${limit}&page=${page}&search=${query}`
+        url: `students?limit=${limit}&page=${page}&search=${query}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -55,18 +55,7 @@ const Schools = () => {
     setPage(1)
   }, [query])
 
-
-  const handleActive = (id, activeStatus) => {
-    sendRequest({
-      url: `center/${id}/edit`,
-      method: 'PUT',
-      body: { active: !activeStatus }
-    }, result => {
-      getData()
-    }, true)
-  }
-
-  const columns = schoolColumn(handleActive)
+  const columns = studentColumn((id)=>navigate(`edit/${id}`))
 
   return (
     <>
@@ -77,15 +66,17 @@ const Schools = () => {
           rowGap: 25
         }}
       >
-        <PageHeader heading={'School List'} />
-        <SearchBar func={setQuery} value={query} placeholder={'Search Schools by name'} />
+         <PageHeader heading={'Students List'} >
+          <Button onClick={()=>navigate('add')} type='primary' icon={<FaPlus/>}  >Add Student</Button>
+        </PageHeader>
+        {/* <SearchBar func={setQuery} value={query} placeholder={'Search Students by name'} /> */}
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
         <MyTable data={data} columns={columns} />
-        {/* <MyPagination {...paginationObject} /> */}
+        <MyPagination {...paginationObject} />
       </div>
     </>
   )
 }
 
-export default Schools
+export default Students

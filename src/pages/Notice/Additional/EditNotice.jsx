@@ -1,34 +1,46 @@
 import { Button, Col, Form, Row } from 'antd';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router';
 import useHttp2 from '../../../hooks/useHttp2';
 import classes from './Additional.module.css'
 import Notice_Info from './components/Notice_Info';
 import useHttpForm from '../../../hooks/useHttpForm';
 
-const AddNotice = () => {
+const EditNotice = () => {
 
 
     const [form] = Form.useForm();
     const { sendRequest, isLoading } = useHttpForm()
     const navigate = useNavigate()
+    const {id} = useParams()
 
 
     const handleForm = (values) => {
 
         const formData = new FormData()
 
-        formData.append('label',values.label)
-        formData.append('file',values.file.file)
+        formData.append('label', values.label)
+
+        if (values.file) {
+            formData.append('file', values.file.file)
+        }
 
         sendRequest({
-            url: `notices`,
-            method: 'POST',
+            url: `notices/${id}`,
+            method: 'PATCH',
             body: formData
         }, result => {
             navigate('/updates')
         }, true)
     }
+
+    useEffect(() => {
+        sendRequest({
+            url: `notices/${id}`
+        }, result => {
+            form.setFieldValue('label',result.data.label)
+        })
+    }, [])
 
 
     return (
@@ -54,9 +66,9 @@ const AddNotice = () => {
                     <Notice_Info />
                 </Col>
             </Row>
-            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Add Update</Button>
+            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Edit Update</Button>
         </Form >
     )
 }
 
-export default AddNotice
+export default EditNotice

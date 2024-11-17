@@ -6,6 +6,8 @@ import MyTable from '../../components/table/MyTable'
 import MyPagination from '../../components/table/MyPagination'
 import { schoolColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
+import { Button } from 'antd'
+import { FaPlus } from 'react-icons/fa'
 
 
 const Schools = () => {
@@ -39,7 +41,7 @@ const Schools = () => {
   const getData = () => {
     console.log('we are here')
     sendRequest({
-        url: `centers?limit=${limit}&page=${page}&search=${query}`
+        url: `center?limit=${limit}&page=${page}&search=${query}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -76,8 +78,10 @@ const Schools = () => {
           rowGap: 25
         }}
       >
-        <PageHeader heading={'School List'} />
-        <SearchBar func={setQuery} value={query} placeholder={'Search Schools by name'} />
+        <PageHeader heading={'Schools List'} >
+          <Button onClick={()=>navigate('add')} type='primary' icon={<FaPlus/>}  >Add School</Button>
+        </PageHeader>
+        {/* <SearchBar func={setQuery} value={query} placeholder={'Search Schools by name'} /> */}
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
         <MyTable data={data} columns={columns} />

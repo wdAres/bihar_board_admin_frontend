@@ -11,10 +11,18 @@ const NonAuthHeader = () => {
     return (
         <React.Fragment>
             <Header className={classes.header}>
-                <img className={classes.logo} src='/images/vb.png' alt="" />
+                <img className={classes.logo} src='/board.png' alt="" />
                 <nav className={classes.header_nav}>
                     <>
                         <Button
+                            className={classes.header_nav_btn}
+                            type='link'
+                            href='https://biharsanskritboard.netlify.app/'
+                            // icon={<CiUser className={classes.icon} />}
+                        >
+                            Visit Website
+                        </Button>
+                        {/* <Button
                             className={classes.header_nav_btn}
                             type='link'
                             icon={<CiUser className={classes.icon} />}
@@ -27,7 +35,7 @@ const NonAuthHeader = () => {
                             icon={<CiUser className={classes.icon} />}
                         >
                             <Link to={'/signup'}>Signup</Link>
-                        </Button>
+                        </Button> */}
                     </>
                 </nav>
             </Header>

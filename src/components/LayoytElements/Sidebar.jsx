@@ -5,33 +5,43 @@ import { BsCash } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { NavLink } from 'react-router-dom';
 import classes from './Sidebar.module.css'
+import { FaRegQuestionCircle, FaSchool } from 'react-icons/fa';
+import { LuContact } from 'react-icons/lu';
+import { TfiAnnouncement } from 'react-icons/tfi';
+import { PiStudent } from 'react-icons/pi';
 
 function Sidebar({ sidebar, handleSidebar }) {
 
     const linksArr = [
         {
             key: '01',
-            icon: <IoBagOutline size={14} />,
+            icon: <FaSchool size={14} />,
             label: 'School List',
             link: '/school'
         },
         {
             key: '02',
-            icon: <IoBagOutline size={14} />,
+            icon: <LuContact size={14} />,
             label: 'Contacts',
             link: '/contacts'
         },
         {
             key: '03',
-            icon: <BsCash size={14} />,
+            icon: <FaRegQuestionCircle size={14} />,
             label: 'Inquiries',
             link: '/inquiries'
         },
         {
             key: '04',
-            icon: <BsCash size={14} />,
+            icon: <TfiAnnouncement size={14} />,
             label: 'Updates',
             link: '/updates'
+        },
+        {
+            key: '05',
+            icon: <PiStudent size={14} />,
+            label: 'Students',
+            link: '/student'
         }
     ]
 

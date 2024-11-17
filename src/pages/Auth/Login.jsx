@@ -48,7 +48,7 @@ const Login = () => {
             },
             body: values
         }, result => {
-            Cookies.set('admin', JSON.stringify({user:result.data.user , token:result.token}))
+            Cookies.set('admin', JSON.stringify(result.data))
             navigate('/school')
         }, true)
     };
@@ -77,7 +77,7 @@ const Login = () => {
 
                 {inputData.map(element => <FormItem key={element.name} {...element} />)}
 
-                <Link style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10, color: `var(--themeColor)` }} to={'/forget'}>Forgot Password?</Link>
+                {/* <Link style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10, color: `var(--themeColor)` }} to={'/forget'}>Forgot Password?</Link> */}
 
                 <Form.Item
                     wrapperCol={{
