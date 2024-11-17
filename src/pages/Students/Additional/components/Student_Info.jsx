@@ -10,7 +10,7 @@ const S_Info = () => {
             { label: 'Student Mobile Number', name: 'student_mobile_number', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Father Name', name: 'student_father_name', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             { label: 'Student Mother Name', name: 'student_mother_name', rules: [{ required: true }], element: (data) => <Input {...data} /> },
-            // { label: 'Date of Birth in Figures', name: 'dob_in_figures', rules: [{ required: true }], element: (data) => <DatePicker {...data} /> },
+            { label: 'Date of Birth in Figures', name: 'dob_in_figures', rules: [{ required: true }], element: (data) => <Input type='date' {...data} /> },
             { label: 'Date of Birth in Words', name: 'dob_in_words', rules: [{ required: true }], element: (data) => <Input {...data} /> },
             {
                 label: 'Additional Subject',

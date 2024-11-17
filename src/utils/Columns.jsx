@@ -763,6 +763,11 @@ export const inquiryColumn = () => ([
     dataIndex: 'name',
   },
   {
+    title: 'Mobile Number',
+    key: 'phone',
+    dataIndex: 'phone',
+  },
+  {
     title: 'Email',
     key: 'email',
     dataIndex: 'email',
@@ -787,8 +792,8 @@ export const noticeBoardColumn = (handleView, handleDelete) => ([
   {
     title: 'Attachment',
     key: 'fileUrl',
-    render: (_, { fileUrl }) => (
-      <a href={fileUrl} target="_blank" download={true}>Download</a>
+    render: (_, { file }) => (
+      <a href={file} target="_blank" download={true}>Download</a>
     ),
     align: 'center'
   },

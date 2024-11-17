@@ -110,7 +110,8 @@ const EditStudent = () => {
                     <Upload_Docuements />
                 </Col>
             </Row>
-            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Edit Student</Button>
+            {/* <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Edit Student</Button> */}
+            <Button loading={isLoading}  htmlType='button' className={classes.bottom_btn} onClick={()=>navigate(-1)} size='large'>Back</Button>
         </Form>
     )
 }
