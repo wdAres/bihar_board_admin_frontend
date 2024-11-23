@@ -41,7 +41,7 @@ const Login = () => {
 
     const onFinish = (values) => {
         sendRequest({
-            url: 'auth/login',
+            url: 'admin/login',
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

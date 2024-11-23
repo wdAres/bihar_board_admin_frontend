@@ -19,12 +19,12 @@ function Sidebar({ sidebar, handleSidebar }) {
             label: 'School List',
             link: '/school'
         },
-        {
-            key: '02',
-            icon: <LuContact size={14} />,
-            label: 'Contacts',
-            link: '/contacts'
-        },
+        // {
+        //     key: '02',
+        //     icon: <LuContact size={14} />,
+        //     label: 'Contacts',
+        //     link: '/contacts'
+        // },
         {
             key: '03',
             icon: <FaRegQuestionCircle size={14} />,
@@ -34,8 +34,20 @@ function Sidebar({ sidebar, handleSidebar }) {
         {
             key: '04',
             icon: <TfiAnnouncement size={14} />,
-            label: 'Updates',
-            link: '/updates'
+            label: 'Notice',
+            link: '/notice'
+        },
+        {
+            key: '04',
+            icon: <TfiAnnouncement size={14} />,
+            label: 'Tender',
+            link: '/tender'
+        },
+        {
+            key: '04',
+            icon: <TfiAnnouncement size={14} />,
+            label: 'Important Links',
+            link: '/important-link'
         },
         {
             key: '05',

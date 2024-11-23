@@ -32,6 +32,7 @@ const AddNotice = () => {
 
 
     return (
+        <>
         <Form
             scrollToFirstError
             form={form}
@@ -56,6 +57,7 @@ const AddNotice = () => {
             </Row>
             <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Add Update</Button>
         </Form >
+        </>
     )
 }
 

@@ -17,6 +17,12 @@ const S_Address = () => {
            rules: [{ required: true }],
             element: (data) => <Input {...data} />
         },
+        {
+            label: 'School Address',
+            name: 'center_address',
+           rules: [{ required: true }],
+            element: (data) => <Input.TextArea {...data} />
+        },
         
     ]
     return (

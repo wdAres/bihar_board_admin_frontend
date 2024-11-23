@@ -2,10 +2,10 @@ import { Flex } from 'antd'
 import React from 'react'
 import classes from '../filter/filter.module.css'
 
-function PageHeader({children,heading}) {
+function PageHeader({children,heading,cls}) {
     return (
         <div
-            className={classes.flex_container}
+            className={`${classes.flex_container} ${cls}`}
         >
             <Flex
                 align='flex-start'

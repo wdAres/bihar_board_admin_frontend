@@ -15,6 +15,7 @@ import Students from './pages/Students/Student'
 import AddNotice from './pages/Notice/Additional/AddNotice'
 import EditNotice from './pages/Notice/Additional/EditNotice'
 import EditStudent from './pages/Students/Additional/EditSchool'
+import EditSchool from './pages/Schools/Additional/EditSchool'
 
 
 const someLinks = ['/login', '/signup', '/forget', '/admin_login/:resetToken']
@@ -45,16 +46,18 @@ function App() {
               <Route path='/school'  >
                 <Route index element={<Schools />} />
                 <Route path='/school/add' element={<AddSchool />} />
+                <Route path='/school/edit/:id' element={<EditSchool />} />
               </Route>
-              <Route path='/updates'  >
+              <Route path='/notice'  >
                 <Route index element={<Notice />} />
-                <Route path='/updates/add' element={<AddNotice />} />
-                <Route path='/updates/edit/:id' element={<EditNotice />} />
+                <Route path='/notice/add' element={<AddNotice />} />
+                <Route path='/notice/edit/:id' element={<EditNotice />} />
               </Route>
               <Route path='/student'  >
                 <Route index element={<Students />} />
-                <Route path='/student/add' element={<AddStudent />} />
-                <Route path='/student/edit/:id' element={<EditStudent />} />
+                {/* <Route path='/student/add' element={<AddStudent />} />
+                <Route path='/student/edit/:id' element={<EditStudent />} /> */}
+                <Route path='/student/by-center/:id' element={<Students />} />
               </Route>
               <Route path='/contacts' element={<Contact />} />
               <Route path='/inquiries' element={<Inquiry />} />

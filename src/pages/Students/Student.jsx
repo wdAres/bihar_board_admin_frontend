@@ -1,25 +1,70 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useHttp2 from '../../hooks/useHttp2'
 import PageHeader from '../../components/UI/PageHeader'
 import MyTable from '../../components/table/MyTable'
 import MyPagination from '../../components/table/MyPagination'
 import { schoolColumn, studentColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
-import { FaPlus } from 'react-icons/fa'
-import { Button } from 'antd'
-
+import { FaDownload, FaPlus } from 'react-icons/fa'
+import { Button, Space } from 'antd'
+import Cookies from 'js-cookie'
+import SearchAndFilter from '../../components/filter/SearchAndFilter'
 
 const Students = () => {
 
-  const [date, setDate] = useState(new Date())
-  const [query, setQuery] = useState('')
+  const {id} = useParams()
+
+  // const token = JSON.parse(Cookies.get('admin') ?? {})?.token
   const { sendRequest, isLoading } = useHttp2()
+  const token = JSON.parse(Cookies.get('admin') ?? {})?.user?.id
   const [data, setData] = useState([])
   const [pageDetails, setPageDetails] = useState({})
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
   const navigation = useNavigate()
+  // For Filter
+  const [date, setDate] = useState('')
+  const [query, setQuery] = useState('')
+
+  const filterProps = {
+    query,
+    setQuery,
+    date,
+    setDate
+  }
+
+  const downloadExcelFile = async () => {
+    try {
+        const response = await fetch('http://127.0.0.1:8001/api/v1/download-students-xls', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/vnd.ms-excel', 
+                'Authorization':`Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const blob = await response.blob();
+
+        // Create a URL for the blob
+        const url = window.URL.createObjectURL(blob);
+
+        // Create an anchor element and simulate a click
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'file.xls'); // Set the file name
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (error) {
+        console.error('Error downloading the file:', error);
+    }
+};
+
 
   const paginationObject = {
     pageDetails,
@@ -29,18 +74,13 @@ const Students = () => {
     setPage
   }
 
-  const filterProps = {
-    query,
-    setQuery,
-    date,
-    setDate
-  }
 
   const navigate = useNavigate()
 
   const getData = () => {
+    let url = id ? `students/center/${id}` : `students`
     sendRequest({
-        url: `students?limit=${limit}&page=${page}&search=${query}`
+      url: `${url}?limit=${limit}&page=${page}&search=${query}&date=${date}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -49,13 +89,13 @@ const Students = () => {
 
   useEffect(() => {
     getData()
-  }, [limit, page, query])
+  }, [limit, page, query, date])
 
   useEffect(() => {
     setPage(1)
-  }, [query])
+  }, [query, date])
 
-  const columns = studentColumn((id)=>navigate(`edit/${id}`))
+  const columns = studentColumn((id) => navigate(`edit/${id}`))
 
   return (
     <>
@@ -66,9 +106,14 @@ const Students = () => {
           rowGap: 25
         }}
       >
-         <PageHeader heading={'Students List'} >
-          <Button onClick={()=>navigate('add')} type='primary' icon={<FaPlus/>}  >Add Student</Button>
+        <PageHeader heading={id ? 'Students By School':'Students List'} >
+          {!id &&
+          <Space>
+            <Button onClick={downloadExcelFile} icon={<FaDownload />} type='default'>Download Data</Button>
+          </Space>
+          }
         </PageHeader>
+        <SearchAndFilter {...filterProps} />
         {/* <SearchBar func={setQuery} value={query} placeholder={'Search Students by name'} /> */}
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
@@ -78,5 +123,6 @@ const Students = () => {
     </>
   )
 }
+
 
 export default Students

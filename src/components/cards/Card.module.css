@@ -2,7 +2,13 @@
 
 .gtc{}
 .gtc_image{
-    width: 50px;
+    width: 50px !important;
+    height: 50px;
+    background: #dbdbdb;
+    border-radius: var(--borderRadius);
+}
+.gtc_image img{
+    width: 50px !important;
     height: 50px;
     background: #dbdbdb;
     border-radius: var(--borderRadius);

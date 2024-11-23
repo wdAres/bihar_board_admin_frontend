@@ -8,6 +8,7 @@ import { inquiryColumn, noticeBoardColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
 import { FaPlus } from 'react-icons/fa'
 import { Button } from 'antd'
+import SearchAndFilter from '../../components/filter/SearchAndFilter'
 
 
 const Notice = () => {
@@ -19,7 +20,7 @@ const Notice = () => {
     const [pageDetails, setPageDetails] = useState({})
     const [limit, setLimit] = useState(10)
     const [page, setPage] = useState(1)
-    const navigation = useNavigate()
+    const navigate = useNavigate()
 
     const paginationObject = {
         pageDetails,
@@ -36,12 +37,10 @@ const Notice = () => {
         setDate
     }
 
-    const navigate = useNavigate()
 
     const getData = () => {
         sendRequest({
-            // url: `centers`
-            url: `notices?limit=${limit}&page=${page}&search=${query}`
+            url: `notices?limit=${limit}&page=${page}&search=${query}&date=${date}`
         }, result => {
             setData(result.data.docs)
             setPageDetails({ ...result.data, docs: [] })
@@ -50,11 +49,11 @@ const Notice = () => {
 
     useEffect(() => {
         getData()
-    }, [limit, page, query])
+    }, [limit, page, query,date])
 
     useEffect(() => {
         setPage(1)
-    }, [query])
+    }, [query,date])
 
     const handleDelete = (id) => {
         sendRequest({
@@ -77,9 +76,10 @@ const Notice = () => {
                     rowGap: 25
                 }}
             >
-                <PageHeader heading={'Updates'} >
-                    <Button onClick={() => navigate('add')} type='primary' icon={<FaPlus />}  >Add Update</Button>
+                <PageHeader heading={'Notice'} >
+                    <Button onClick={() => navigate('add')} type='primary' icon={<FaPlus />}  >Add Notice</Button>
                 </PageHeader>
+                <SearchAndFilter {...filterProps} />
                 <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
                     {pageDetails?.totalDocs ?? 0} Results</h4>
                 <MyTable data={data} columns={columns} />

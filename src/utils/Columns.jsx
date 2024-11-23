@@ -672,7 +672,7 @@ export const notificationColumns = (handleView) => ([
 //????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????//
 
 
-export const schoolColumn = (handleActive) => ([
+export const schoolColumn = (handleView,handleDelete,viewStudents) => ([
   {
     title: 'School',
     key: 'school',
@@ -687,13 +687,6 @@ export const schoolColumn = (handleActive) => ([
     align: 'center'
   },
   {
-    title: 'School District',
-    key: 'school_district',
-    dataIndex: 'school_district',
-    align: 'center'
-  },
-
-  {
     title: 'School Pincode',
     key: 'school_pincode',
     dataIndex: 'school_pincode',
@@ -705,14 +698,14 @@ export const schoolColumn = (handleActive) => ([
     dataIndex: 'school_level',
     align: 'center'
   },
-  // {
-  //   title: 'Active',
-  //   key: 'active',
-  //   render: (_, { _id, active }) => (
-  //     <Switch onChange={handleActive.bind(this, _id, active)} defaultChecked={active} />
-  //   ),
-  //   align: 'center'
-  // },
+  {
+    title: 'View Students',
+    key: 'view_students',
+    render: (_, { id }) => (
+      <h5 style={{fontSize:14,color:'#ae0000',fontWeight:500,cursor:'pointer'}} onClick={()=>viewStudents(id)}>View</h5>
+    ),
+    align: 'center'
+  },
   {
     title: 'Created At',
     dataIndex: 'createdAt',
@@ -720,6 +713,26 @@ export const schoolColumn = (handleActive) => ([
       moment(createdAt).format('YYYY-MM-DD')
     ),
     align: 'center'
+  },
+  {
+    title: 'Action',
+    render: (_, { id }) => (
+      <Space>
+        <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEdit size={16} /></Button>
+        <Popconfirm
+          title="Delete"
+          description="Are you sure to delete this?"
+          onConfirm={() => handleDelete(id)}
+          onCancel={cancel}
+          okText="Yes"
+          cancelText="No"
+          placement="topRight"
+        >
+          <Button type='default' shape="circle" ><RiDeleteBin6Line size={16} /></Button>
+        </Popconfirm>
+      </Space>
+    ),
+    align: 'center',
   }
 ])
 

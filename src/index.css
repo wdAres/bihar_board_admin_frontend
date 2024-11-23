@@ -85,6 +85,10 @@ main{
   scrollbar-width: none;  /* Firefox */
 }
 
+.form_heading{
+  margin-bottom: 20px;
+}
+
 
 @media (max-width:1000px) {
   .row{
