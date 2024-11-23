@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, Card, Input, Select, Upload } from 'antd'
+import { Button, Card, Flex, Input, Select, Upload } from 'antd'
 import classes from './Component.module.css'
 import FormItem from '../../../../components/FormItem/FormItem'
 import MyUpload from '../../../../components/MyUpload/MyUpload'
-const Notice_Info = ({handleChange}) => {
+import { FaPlus } from 'react-icons/fa'
+const Notice_Info = ({file=[],handleFiles=()=>{}}) => {
 
     const inputFields = [
         {
@@ -16,11 +17,18 @@ const Notice_Info = ({handleChange}) => {
             label: 'Attachment',
             name: 'file',
             rules: [{ required: false }],
-            dataObj:{
-                maxCount:1
+            dataObj: {
+                maxCount: 1,
+                listType:'picture-card',
+                beforeUpload:x=>false,
+                fileList:file,
+                onChange:fileList=>handleFiles(fileList,'file')
             },
             element: (data) =>  <Upload   beforeUpload={file=>false} {...data}>
-            <Button >Click to Upload</Button>
+            <Flex align='center' justify='center' vertical>
+            <FaPlus />
+            <div className="ant-upload-text">Upload</div>
+        </Flex>
           </Upload>
         }
         ]

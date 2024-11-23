@@ -14,6 +14,23 @@ const EditNotice = () => {
     const navigate = useNavigate()
     const {id} = useParams()
 
+    const [file,setFile] = useState(null)
+
+    const dic = {
+        'file':setFile,
+    }
+
+    const handleFiles = (fileList,key)=>{
+        dic[key](fileList.fileList)
+        form.setFieldValue(key,fileList)
+    }
+
+    const uploadProps = {
+        file,
+        handleFiles
+    }
+
+
 
     const handleForm = (values) => {
 
@@ -30,7 +47,7 @@ const EditNotice = () => {
             method: 'PATCH',
             body: formData
         }, result => {
-            navigate('/updates')
+            navigate('/notice')
         }, true)
     }
 
@@ -39,6 +56,12 @@ const EditNotice = () => {
             url: `notices/${id}`
         }, result => {
             form.setFieldValue('label',result.data.label)
+            setFile([{
+                uid:'-1',
+                name:'file',
+                status:'done',
+                url:result.data.file
+            }])
         })
     }, [])
 
@@ -63,7 +86,7 @@ const EditNotice = () => {
                     }}
 
                     className={classes.my_flex}>
-                    <Notice_Info />
+                    <Notice_Info {...uploadProps} />
                 </Col>
             </Row>
             <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Edit Update</Button>

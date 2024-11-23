@@ -786,6 +786,11 @@ export const inquiryColumn = () => ([
     dataIndex: 'email',
   },
   {
+    title: 'Subject',
+    key: 'subject',
+    dataIndex: 'subject',
+  },
+  {
     title: 'Message',
     key: 'message',
     ellipsis: {

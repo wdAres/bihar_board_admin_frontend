@@ -13,6 +13,21 @@ const AddNotice = () => {
     const { sendRequest, isLoading } = useHttpForm()
     const navigate = useNavigate()
 
+    const [file,setFile] = useState(null)
+
+    const dic = {
+        'file':setFile,
+    }
+
+    const handleFiles = (fileList,key)=>{
+        dic[key](fileList.fileList)
+        form.setFieldValue(key,fileList)
+    }
+
+    const uploadProps = {
+        file,
+        handleFiles
+    }
 
     const handleForm = (values) => {
 
@@ -26,7 +41,7 @@ const AddNotice = () => {
             method: 'POST',
             body: formData
         }, result => {
-            navigate('/updates')
+            navigate('/notice')
         }, true)
     }
 
@@ -52,10 +67,10 @@ const AddNotice = () => {
                     }}
 
                     className={classes.my_flex}>
-                    <Notice_Info />
+                    <Notice_Info {...uploadProps} />
                 </Col>
             </Row>
-            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Add Update</Button>
+            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Add Notice</Button>
         </Form >
         </>
     )
