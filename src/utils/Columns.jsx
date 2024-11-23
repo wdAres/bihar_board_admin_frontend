@@ -6,7 +6,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import TwoLines from "../components/UI/TwoLines";
 import moment from "moment";
 import { CiEdit } from "react-icons/ci";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaEye } from "react-icons/fa";
 
 const confirm = (e) => {
   message.success('Click on Yes');
@@ -845,6 +845,50 @@ export const noticeBoardColumn = (handleView, handleDelete) => ([
   }
 
 ])
+export const impLinkColumn = (handleView, handleDelete) => ([
+  {
+    title: 'Label',
+    key: 'label',
+    dataIndex: 'label',
+  },
+  {
+    title: 'Link',
+    key: 'url',
+    render: (_, { url }) => (
+      <a href={url} target="_blank">Visit</a>
+    ),
+    align: 'center'
+  },
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    render: (_, { createdAt }) => (
+      moment(createdAt).format('YYYY-MM-DD')
+    ),
+    align: 'center'
+  },
+  {
+    title: 'Action',
+    render: (_, { id }) => (
+      <Space>
+        <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEdit size={16} /></Button>
+        <Popconfirm
+          title="Delete"
+          description="Are you sure to delete this?"
+          onConfirm={() => handleDelete(id)}
+          onCancel={cancel}
+          okText="Yes"
+          cancelText="No"
+          placement="topRight"
+        >
+          <Button type='default' shape="circle" ><RiDeleteBin6Line size={16} /></Button>
+        </Popconfirm>
+      </Space>
+    ),
+    align: 'center',
+  }
+
+])
 
 export const studentColumn = (handleView) => ([
   {
@@ -885,6 +929,44 @@ export const studentColumn = (handleView) => ([
     render: (_, { id }) => (
       <Space>
         <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEdit size={16} /></Button>
+      </Space>
+    ),
+    align: 'center',
+  }
+])
+
+
+export const supportColumn = (handleView) => ([
+  {
+    title: 'Ticket ID',
+    key: 'id',
+    dataIndex: 'id',
+  },
+  {
+    title:'Center ID',
+    key:'center_id',
+    dataIndex:'center_id',
+    align: 'center'
+  },
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    render: (_, { createdAt }) => (
+      moment(createdAt).format('DD-MM-YYYY')
+    ),
+    align: 'center'
+  },
+  {
+    title:'Status',
+    key:'status',
+    dataIndex:'status',
+    align: 'center'
+  },
+  {
+    title: 'Action',
+    render: (_, { id }) => (
+      <Space>
+        <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEye size={16} /></Button>
       </Space>
     ),
     align: 'center',

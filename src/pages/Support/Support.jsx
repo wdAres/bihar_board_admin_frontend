@@ -4,12 +4,13 @@ import useHttp2 from '../../hooks/useHttp2'
 import PageHeader from '../../components/UI/PageHeader'
 import MyTable from '../../components/table/MyTable'
 import MyPagination from '../../components/table/MyPagination'
-import { inquiryColumn } from '../../utils/Columns'
+import {supportColumn } from '../../utils/Columns'
 import SearchBar from '../../components/filter/SearchBar'
+import { FaDownload, FaPlus } from 'react-icons/fa'
+import { Button, Space } from 'antd'
 import SearchAndFilter from '../../components/filter/SearchAndFilter'
 
-
-const Inquiry = () => {
+const Support = () => {
 
   const [date, setDate] = useState(new Date())
   const [query, setQuery] = useState('')
@@ -39,8 +40,7 @@ const Inquiry = () => {
 
   const getData = () => {
     sendRequest({
-      // url: `centers`
-      url: `inquiry?limit=${limit}&page=${page}&search=${query}&date=${date}`
+      url: `supports?limit=${limit}&page=${page}&search=${query}&date=${date}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -55,10 +55,7 @@ const Inquiry = () => {
     setPage(1)
   }, [query,date])
 
-  
-
-
-  const columns = inquiryColumn()
+  const columns = supportColumn(id=>navigate(`view/${id}`))
 
   return (
     <>
@@ -69,8 +66,10 @@ const Inquiry = () => {
           rowGap: 25
         }}
       >
-        <PageHeader heading={'Inquiries'} />
+        <PageHeader heading={'Support List'} >
+        </PageHeader>
         <SearchAndFilter {...filterProps} />
+        {/* <SearchBar func={setQuery} value={query} placeholder={'Search Support by name'} /> */}
         <h4 style={{ color: 'var(--color_black_2)', fontWeight: '500' }}>
           {pageDetails?.totalDocs ?? 0} Results</h4>
         <MyTable data={data} columns={columns} />
@@ -80,4 +79,4 @@ const Inquiry = () => {
   )
 }
 
-export default Inquiry
+export default Support

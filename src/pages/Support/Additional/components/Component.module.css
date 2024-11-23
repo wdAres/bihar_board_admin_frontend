@@ -1,0 +1,38 @@
+.card_body{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.width_80 label{
+    width: 80% !important;
+}
+
+
+.item{
+    margin-bottom: 0 !important;
+}
+
+.item > div{
+    justify-content: space-between;
+}
+
+.item label{
+    color: rgba(0, 0, 0, 0.88) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.item label::before{
+    content: '' !important;
+    position: unset !important;
+    margin-inline-end: 0 !important;
+}
+
+.item label::after{
+    content: '' !important;
+}
+
+.txa{
+    text-transform: unset !important;
+}

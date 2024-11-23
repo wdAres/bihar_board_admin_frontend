@@ -19,6 +19,18 @@ function Sidebar({ sidebar, handleSidebar }) {
             label: 'School List',
             link: '/school'
         },
+        {
+            key: '05',
+            icon: <PiStudent size={14} />,
+            label: 'Students',
+            link: '/student'
+        },
+        {
+            key: '05',
+            icon: <PiStudent size={14} />,
+            label: 'Support',
+            link: '/support'
+        },
         // {
         //     key: '02',
         //     icon: <LuContact size={14} />,
@@ -48,12 +60,6 @@ function Sidebar({ sidebar, handleSidebar }) {
             icon: <TfiAnnouncement size={14} />,
             label: 'Important Links',
             link: '/important-link'
-        },
-        {
-            key: '05',
-            icon: <PiStudent size={14} />,
-            label: 'Students',
-            link: '/student'
         }
     ]
 

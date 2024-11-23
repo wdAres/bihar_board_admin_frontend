@@ -16,6 +16,14 @@ import AddNotice from './pages/Notice/Additional/AddNotice'
 import EditNotice from './pages/Notice/Additional/EditNotice'
 import EditStudent from './pages/Students/Additional/EditSchool'
 import EditSchool from './pages/Schools/Additional/EditSchool'
+import Tender from './pages/Tender/Tender'
+import AddTender from './pages/Tender/Additional/AddNotice'
+import EditTender from './pages/Tender/Additional/EditNotice'
+import ImpLink from './pages/ImpLinks/ImpLink'
+import AddImpLink from './pages/ImpLinks/Additional/AddImpLink'
+import EditImpLink from './pages/ImpLinks/Additional/EditImpLink'
+import EditSupport from './pages/Support/Additional/EditSupport'
+import Support from './pages/Support/Support'
 
 
 const someLinks = ['/login', '/signup', '/forget', '/admin_login/:resetToken']
@@ -53,6 +61,16 @@ function App() {
                 <Route path='/notice/add' element={<AddNotice />} />
                 <Route path='/notice/edit/:id' element={<EditNotice />} />
               </Route>
+              <Route path='/tender'  >
+                <Route index element={<Tender />} />
+                <Route path='/tender/add' element={<AddTender />} />
+                <Route path='/tender/edit/:id' element={<EditTender />} />
+              </Route>
+              <Route path='/important-link'  >
+                <Route index element={<ImpLink />} />
+                <Route path='/important-link/add' element={<AddImpLink />} />
+                <Route path='/important-link/edit/:id' element={<EditImpLink />} />
+              </Route>
               <Route path='/student'  >
                 <Route index element={<Students />} />
                 {/* <Route path='/student/add' element={<AddStudent />} />
@@ -62,6 +80,10 @@ function App() {
               <Route path='/contacts' element={<Contact />} />
               <Route path='/inquiries' element={<Inquiry />} />
               <Route path='/updates' element={<Notice />} />
+              <Route path='/support'  >
+                <Route index element={<Support />} />
+                <Route path='/support/view/:id' element={<EditSupport />} />
+              </Route>
             </Routes>
           </LayoutFile>
       }
