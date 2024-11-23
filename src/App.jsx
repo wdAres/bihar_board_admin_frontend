@@ -24,6 +24,7 @@ import AddImpLink from './pages/ImpLinks/Additional/AddImpLink'
 import EditImpLink from './pages/ImpLinks/Additional/EditImpLink'
 import EditSupport from './pages/Support/Additional/EditSupport'
 import Support from './pages/Support/Support'
+import View from './pages/Students/View'
 
 
 const someLinks = ['/login', '/signup', '/forget', '/admin_login/:resetToken']
@@ -71,11 +72,15 @@ function App() {
                 <Route path='/important-link/add' element={<AddImpLink />} />
                 <Route path='/important-link/edit/:id' element={<EditImpLink />} />
               </Route>
+              <Route path='/view'  >
+                <Route index element={<View />} />
+              </Route>
               <Route path='/student'  >
                 <Route index element={<Students />} />
                 {/* <Route path='/student/add' element={<AddStudent />} />
                 <Route path='/student/edit/:id' element={<EditStudent />} /> */}
                 <Route path='/student/by-center/:id' element={<Students />} />
+                <Route path='/student/view/:id' element={<View />} />
               </Route>
               <Route path='/contacts' element={<Contact />} />
               <Route path='/inquiries' element={<Inquiry />} />

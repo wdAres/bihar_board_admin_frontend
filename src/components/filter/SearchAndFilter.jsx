@@ -2,6 +2,7 @@ import { DatePicker, Input, Select } from 'antd';
 import React from 'react'
 import { CiSearch } from "react-icons/ci";
 import classes from './filter.module.css'
+import moment from 'moment';
 
 function SearchAndFilter({ query, setQuery , date , setDate  }) {
 

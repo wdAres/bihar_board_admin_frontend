@@ -10,9 +10,11 @@ import { FaDownload, FaPlus } from 'react-icons/fa'
 import { Button, Space } from 'antd'
 import SearchAndFilter from '../../components/filter/SearchAndFilter'
 
+// call pr hu watit apko nhi bol rha 
+
 const Support = () => {
 
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState('')
   const [query, setQuery] = useState('')
   const { sendRequest, isLoading } = useHttp2()
   const [data, setData] = useState([])
