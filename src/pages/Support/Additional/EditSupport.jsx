@@ -19,8 +19,8 @@ const EditSupport = () => {
     const handleForm = (values) => {
 
         sendRequest({
-            url: `supports/${id}`,
-            method: 'PUT',
+            url: `support/${id}`,
+            method: 'PATCH',
             body: {
                 status:'resolved'
             }
@@ -31,10 +31,10 @@ const EditSupport = () => {
 
     useEffect(()=>{
         sendRequest({
-            url: `supports/${id}`,
+            url: `support/${id}`,
         }, result => {
             setStatus(result.data.status)
-            form.getFieldsValue(result.data)
+            form.setFieldsValue(result.data)
         }, true)
     },[])
 

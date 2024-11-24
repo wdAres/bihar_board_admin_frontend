@@ -809,9 +809,9 @@ export const noticeBoardColumn = (handleView, handleDelete) => ([
   },
   {
     title: 'Attachment',
-    key: 'fileUrl',
+    key: 'file',
     render: (_, { file }) => (
-      <a href={file} target="_blank" download={true}>Download</a>
+      <a href={'http://127.0.0.1:8001/'+file} target="_blank" >View</a>
     ),
     align: 'center'
   },

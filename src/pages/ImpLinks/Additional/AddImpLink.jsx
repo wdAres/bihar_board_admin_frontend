@@ -10,21 +10,16 @@ const AddImpLink = () => {
 
 
     const [form] = Form.useForm();
-    const { sendRequest, isLoading } = useHttpForm()
+    const { sendRequest, isLoading } = useHttp2()
     const navigate = useNavigate()
 
 
     const handleForm = (values) => {
 
-        const formData = new FormData()
-
-        formData.append('label',values.label)
-        formData.append('url',values.url)
-
         sendRequest({
-            url: `important-links`,
+            url: `important-link`,
             method: 'POST',
-            body: formData
+            body: values
         }, result => {
             navigate('/important-link')
         }, true)

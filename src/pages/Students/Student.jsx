@@ -78,7 +78,7 @@ const Students = () => {
   const navigate = useNavigate()
 
   const getData = () => {
-    let url = id ? `students/center/${id}` : `students`
+    let url = id ? `student/center/${id}` : `student`
     sendRequest({
       url: `${url}?limit=${limit}&page=${page}&search=${query}&date=${date}`
     }, result => {

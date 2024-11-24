@@ -40,7 +40,7 @@ const Tender = () => {
 
     const getData = () => {
         sendRequest({
-            url: `tenders?limit=${limit}&page=${page}&search=${query}&date=${date}`
+            url: `tender?limit=${limit}&page=${page}&search=${query}&date=${date}`
         }, result => {
             setData(result.data.docs)
             setPageDetails({ ...result.data, docs: [] })

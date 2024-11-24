@@ -40,7 +40,7 @@ const ImpLink = () => {
 
     const getData = () => {
         sendRequest({
-            url: `important-links?limit=${limit}&page=${page}&search=${query}&date=${date}`
+            url: `important-link?limit=${limit}&page=${page}&search=${query}&date=${date}`
         }, result => {
             setData(result.data.docs)
             setPageDetails({ ...result.data, docs: [] })

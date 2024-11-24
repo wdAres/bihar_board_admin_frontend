@@ -42,7 +42,7 @@ const Support = () => {
 
   const getData = () => {
     sendRequest({
-      url: `supports?limit=${limit}&page=${page}&search=${query}&date=${date}`
+      url: `support?limit=${limit}&page=${page}&search=${query}&date=${date}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })

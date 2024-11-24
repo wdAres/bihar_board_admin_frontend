@@ -43,7 +43,7 @@ const Schools = () => {
 
   const getData = () => {
     sendRequest({
-      url: `center?limit=${limit}&page=${page}&search=${query}&search=${query}&date=${date}`
+      url: `center?limit=${limit}&page=${page}&search=${query}&date=${date}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })
@@ -59,15 +59,15 @@ const Schools = () => {
   }, [query, date])
 
 
-  const handleActive = (id, activeStatus) => {
-    sendRequest({
-      url: `centers/${id}/edit`,
-      method: 'PUT',
-      body: { active: !activeStatus }
-    }, result => {
-      getData()
-    }, true)
-  }
+  // const handleActive = (id, activeStatus) => {
+  //   sendRequest({
+  //     url: `centers/${id}/edit`,
+  //     method: 'PUT',
+  //     body: { active: !activeStatus }
+  //   }, result => {
+  //     getData()
+  //   }, true)
+  // }
 
   
   

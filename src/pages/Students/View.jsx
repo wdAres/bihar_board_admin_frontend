@@ -58,7 +58,7 @@ const View = () => {
     //   };
 
     useEffect(() => {
-        sendRequest({ url: `students/${id}` }, res => {
+        sendRequest({ url: `student/${id}` }, res => {
             setStudent(res.data)
         })
     }, [])

@@ -40,7 +40,7 @@ const Notice = () => {
 
     const getData = () => {
         sendRequest({
-            url: `notices?limit=${limit}&page=${page}&search=${query}&date=${date}`
+            url: `notice?limit=${limit}&page=${page}&search=${query}&date=${date}`
         }, result => {
             setData(result.data.docs)
             setPageDetails({ ...result.data, docs: [] })
