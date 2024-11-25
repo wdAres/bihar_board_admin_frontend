@@ -43,7 +43,7 @@ const Schools = () => {
 
   const getData = () => {
     sendRequest({
-      url: `center?limit=${limit}&page=${page}&search=${query}&date=${date}`
+      url: `center?limit=${limit}&page=${page}&search=${query}`
     }, result => {
       setData(result.data.docs)
       setPageDetails({ ...result.data, docs: [] })

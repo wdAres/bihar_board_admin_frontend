@@ -37,7 +37,7 @@ const AddNotice = () => {
         formData.append('file',values.file.file)
 
         sendRequest({
-            url: `notices`,
+            url: `notice`,
             method: 'POST',
             body: formData
         }, result => {

@@ -8,23 +8,41 @@ const S_Security = () => {
         {
             label: 'Login Email',
             name: 'email',
-            rules: [{ required: true }],
+            rules: [
+                { required: true, message: 'Email is required' },
+                { type: 'email', message: 'The input is not a valid email' }
+            ],
             element: (data) => <Input {...data} />
         },
         {
             label: 'Login Password',
             name: 'password',
-rules: [{ required: true }],
+            rules: [
+                { required: true, message: 'Password is required' },
+                { min: 8, message: 'Password must be at least 8 characters' },
+                { pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, message: 'Password must include uppercase, lowercase, number, and special character' }
+            ],
             element: (data) => <Input.Password {...data} />
         },
         {
             label: 'Confirm Password',
             name: 'confirmPassword',
-rules: [{ required: true }],
-            element: (data) => <Input.Password  {...data} />
-        },
-        
-    ]
+            rules: [
+                { required: true, message: 'Confirm Password is required' },
+                // Custom validation rule to check if passwords match
+                ({ getFieldValue }) => ({
+                    validator(_, value) {
+                        if (!value || getFieldValue('password') === value) {
+                            return Promise.resolve();
+                        }
+                        return Promise.reject(new Error('Passwords do not match'));
+                    }
+                })
+            ],
+            element: (data) => <Input.Password {...data} />
+        }
+    ];
+    
     return (
         <Card
             size="small"

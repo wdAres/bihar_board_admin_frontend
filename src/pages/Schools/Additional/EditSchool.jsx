@@ -20,8 +20,8 @@ const EditSchool = () => {
     const handleForm = (values) => {
 
         sendRequest({
-            url: `auth/signup`,
-            method: 'POST',
+            url: `center/${id}`,
+            method: 'PATCH',
             body: {...values,role:'center'}
         }, result => {
             navigate('/school')
@@ -75,7 +75,7 @@ const EditSchool = () => {
                     <S_Status />
                 </Col>
             </Row>
-            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Add School</Button>
+            <Button loading={isLoading} htmlType='submit' className={classes.bottom_btn} type='primary' size='large'>Update School</Button>
         </Form>
         </>
     )

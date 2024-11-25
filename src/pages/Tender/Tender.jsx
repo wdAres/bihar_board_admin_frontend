@@ -57,7 +57,7 @@ const Tender = () => {
 
     const handleDelete = (id) => {
         sendRequest({
-            url: `tenders/${id}`,
+            url: `tender/${id}`,
             method: 'DELETE'
         }, result => {
             getData()

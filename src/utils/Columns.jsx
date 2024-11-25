@@ -890,7 +890,7 @@ export const impLinkColumn = (handleView, handleDelete) => ([
 
 ])
 
-export const studentColumn = (handleEdit,handleView) => ([
+export const studentColumn = (handleView) => ([
   {
     title: 'Student',
     key: 'student',
@@ -928,7 +928,6 @@ export const studentColumn = (handleEdit,handleView) => ([
     title: 'Action',
     render: (_, { id }) => (
       <Space>
-        <Button type='default' shape="circle" onClick={() => handleEdit(id)} ><FaEdit size={16} /></Button>
         <Button type='default' shape="circle" onClick={() => handleView(id)} ><FaEye size={16} /></Button>
       </Space>
     ),

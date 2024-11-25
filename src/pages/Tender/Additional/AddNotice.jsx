@@ -37,11 +37,11 @@ const AddTender = () => {
         formData.append('file',values.file.file)
 
         sendRequest({
-            url: `tenders`,
+            url: `tender`,
             method: 'POST',
             body: formData
         }, result => {
-            navigate('/notice')
+            navigate('/tender')
         }, true)
     }
 

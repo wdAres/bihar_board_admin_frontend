@@ -41,7 +41,7 @@ const EditImpLink = () => {
 
 
         sendRequest({
-            url: `notices/${id}`,
+            url: `important-link/${id}`,
             method: 'PATCH',
             body: formData
         }, result => {
@@ -51,7 +51,7 @@ const EditImpLink = () => {
 
     useEffect(() => {
         sendRequest({
-            url: `notices/${id}`
+            url: `important-link/${id}`
         }, result => {
             form.setFieldValue('label',result.data.label)
             form.setFieldValue('url',result.data.url)

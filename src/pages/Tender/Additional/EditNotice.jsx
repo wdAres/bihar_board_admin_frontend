@@ -43,17 +43,17 @@ const EditTender = () => {
         }
 
         sendRequest({
-            url: `tenders/${id}`,
+            url: `tender/${id}`,
             method: 'PATCH',
             body: formData
         }, result => {
-            navigate('/notice')
+            navigate('/tender')
         }, true)
     }
 
     useEffect(() => {
         sendRequest({
-            url: `tenders/${id}`
+            url: `tender/${id}`
         }, result => {
             form.setFieldValue('label',result.data.label)
             setFile([{

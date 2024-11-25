@@ -57,7 +57,7 @@ const Notice = () => {
 
     const handleDelete = (id) => {
         sendRequest({
-            url: `notices/${id}`,
+            url: `notice/${id}`,
             method: 'DELETE'
         }, result => {
             getData()

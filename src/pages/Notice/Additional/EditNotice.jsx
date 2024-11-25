@@ -43,7 +43,7 @@ const EditNotice = () => {
         }
 
         sendRequest({
-            url: `notices/${id}`,
+            url: `notice/${id}`,
             method: 'PATCH',
             body: formData
         }, result => {
@@ -53,7 +53,7 @@ const EditNotice = () => {
 
     useEffect(() => {
         sendRequest({
-            url: `notices/${id}`
+            url: `notice/${id}`
         }, result => {
             form.setFieldValue('label',result.data.label)
             setFile([{

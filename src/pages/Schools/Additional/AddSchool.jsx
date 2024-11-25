@@ -19,9 +19,9 @@ const AddSchool = () => {
     const handleForm = (values) => {
 
         sendRequest({
-            url: `auth/signup`,
+            url: `center`,
             method: 'POST',
-            body: {...values,role:'center'}
+            body: {...values,role:'center',profile_review:false}
         }, result => {
             navigate('/school')
         }, true)
