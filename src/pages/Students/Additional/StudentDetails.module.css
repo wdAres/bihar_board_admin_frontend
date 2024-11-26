@@ -1,0 +1,104 @@
+.section {
+    border: 1px solid #dbdbdb;
+    padding: 30px;
+    /* width: 700px; */
+    border-radius: 5px;
+    margin-inline: auto;
+}
+
+.header {
+    display: flex;
+    column-gap: 10px;
+    align-items: flex-start;
+}
+
+.photo {
+    width: 140px;
+    height: 140px;
+    background: rgb(177, 177, 177);
+}
+
+.row {
+    display: flex;
+    border: 1px solid #d4d4d4;
+    min-height: 40px;
+    width: 100%;
+    grid-column: span 1;
+}
+
+.row_100 {
+    display: flex;
+    border: 1px solid #d4d4d4;
+    min-height: 40px;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.header_inner {
+    width: calc(100% - 150px);
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    padding-inline: 10px;
+    background: #eeeeee;
+    font-size: 13px;
+    font-weight: 500;
+    color: #575757;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding-inline: 10px;
+}
+
+.divison {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 20px;
+
+}
+
+.h4 {
+    font-size: 16px;
+    color: rgb(76, 76, 76);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.divison_inputs {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.file_row {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+
+.file > img{
+    width: 120px;
+    height: 50px;
+    margin-inline: auto;
+}
+
+.file_row .file{
+    padding: 10px 0;
+}
+
+.file_row .left{
+    padding: 10px;
+}

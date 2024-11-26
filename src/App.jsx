@@ -25,6 +25,7 @@ import EditImpLink from './pages/ImpLinks/Additional/EditImpLink'
 import EditSupport from './pages/Support/Additional/EditSupport'
 import Support from './pages/Support/Support'
 import View from './pages/Students/View'
+import StudentDetails from './pages/Students/Additional/StudentDetails'
 
 
 const someLinks = ['/login', '/signup', '/forget', '/admin_login/:resetToken']
@@ -80,7 +81,7 @@ function App() {
                 {/* <Route path='/student/add' element={<AddStudent />} />
                 <Route path='/student/edit/:id' element={<EditStudent />} /> */}
                 <Route path='/student/by-center/:id' element={<Students />} />
-                <Route path='/student/view/:id' element={<View />} />
+                <Route path='/student/view/:id' element={<StudentDetails />} />
               </Route>
               <Route path='/contacts' element={<Contact />} />
               <Route path='/inquiries' element={<Inquiry />} />
