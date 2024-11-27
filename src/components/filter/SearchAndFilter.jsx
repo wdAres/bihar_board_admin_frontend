@@ -10,7 +10,6 @@ function SearchAndFilter({ query, setQuery, date, setDate }) {
     const hand = e => {
         const d = e.target.value;
         let newDate = moment(d).format('YYYY-MM-DD')
-        console.log(newDate)
         if (newDate !=='Invalid date') {
             setDate(newDate)
             return ;
