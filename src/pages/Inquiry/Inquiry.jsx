@@ -11,7 +11,7 @@ import SearchAndFilter from '../../components/filter/SearchAndFilter'
 
 const Inquiry = () => {
 
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState('')
   const [query, setQuery] = useState('')
   const { sendRequest, isLoading } = useHttp2()
   const [data, setData] = useState([])

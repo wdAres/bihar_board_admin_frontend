@@ -4,12 +4,18 @@ import { CiSearch } from "react-icons/ci";
 import classes from './filter.module.css'
 import moment from 'moment';
 
-function SearchAndFilter({ query, setQuery , date , setDate  }) {
+function SearchAndFilter({ query, setQuery, date, setDate }) {
 
 
     const hand = e => {
-    let newDate = moment(e).format('YYYY-MM-DD')
-        setDate(newDate)
+        const d = e.target.value;
+        let newDate = moment(d).format('YYYY-MM-DD')
+        console.log(newDate)
+        if (newDate !=='Invalid date') {
+            setDate(newDate)
+            return ;
+        }
+        else setDate('')
     }
 
     return (
@@ -25,10 +31,11 @@ function SearchAndFilter({ query, setQuery , date , setDate  }) {
                 className={classes.res_flex_div}
                 style={{ gap: 10 }}
             >
-                <DatePicker
-                   onChange={hand}
-                />
-                
+                <Input type='date' onChange={hand} />
+                {/* <DatePicker
+                    onChange={hand}
+                /> */}
+
             </div>
         </div>
     )

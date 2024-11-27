@@ -15,7 +15,7 @@ import Cookies from 'js-cookie'
 const Schools = () => {
 
   const token = JSON.parse(Cookies.get('admin') ?? {})?.token
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState('')
   const [query, setQuery] = useState('')
   const { sendRequest, isLoading } = useHttp2()
   const [data, setData] = useState([])
