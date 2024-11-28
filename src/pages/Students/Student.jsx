@@ -10,6 +10,7 @@ import { FaDownload, FaPlus } from 'react-icons/fa'
 import { Button, Space } from 'antd'
 import Cookies from 'js-cookie'
 import SearchAndFilter from '../../components/filter/SearchAndFilter'
+import { BASE_API } from '../../utils/BASE_URL'
 
 const Students = () => {
 
@@ -36,7 +37,7 @@ const Students = () => {
 
   const downloadExcelFile = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:8001/api/v1/download-students-xls', {
+        const response = await fetch(`${BASE_API}/api/v1/download-students-xls`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/vnd.ms-excel', 

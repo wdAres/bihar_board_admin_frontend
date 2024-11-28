@@ -11,6 +11,7 @@ import { FaDownload, FaPlus } from 'react-icons/fa'
 import SearchAndFilter from '../../components/filter/SearchAndFilter'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
+import { BASE_API } from '../../utils/BASE_URL'
 
 const Schools = () => {
 
@@ -73,7 +74,7 @@ const Schools = () => {
   
   const downloadExcelFile = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8001/api/v1/download-centers-xls', {
+      const response = await fetch(`${BASE_API}/api/v1/download-centers-xls`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/vnd.ms-excel',

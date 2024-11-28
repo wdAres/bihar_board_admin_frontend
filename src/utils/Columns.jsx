@@ -7,6 +7,7 @@ import TwoLines from "../components/UI/TwoLines";
 import moment from "moment";
 import { CiEdit } from "react-icons/ci";
 import { FaEdit, FaEye } from "react-icons/fa";
+import { BASE_API } from "./BASE_URL";
 
 const confirm = (e) => {
   message.success('Click on Yes');
@@ -819,7 +820,7 @@ export const noticeBoardColumn = (handleView, handleDelete) => ([
     title: 'Attachment',
     key: 'file',
     render: (_, { file }) => (
-      <a href={'http://127.0.0.1:8001/'+file} target="_blank" >View</a>
+      <a href={BASE_API+'/'+file} target="_blank" >View</a>
     ),
     align: 'center'
   },

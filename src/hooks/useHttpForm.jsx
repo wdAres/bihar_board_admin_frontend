@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
-import { base_url } from '../utils/base_url';
+import { BASE_URL } from '../utils/BASE_URL';
 
 const useHttpForm = () => {
 
@@ -14,7 +14,7 @@ const useHttpForm = () => {
 
         setLoading(true)
 
-        const baseUrl = `${base_url}/${reqConfig.url}`
+        const baseUrl = `${BASE_URL}/${reqConfig.url}`
         const myToast = needToast && toast.loading('Please Wait...')
         try {
             const req = await fetch(baseUrl, {

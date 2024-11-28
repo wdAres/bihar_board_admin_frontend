@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classes from './StudentDetails.module.css';
 import useHttp2 from '../../../hooks/useHttp2';
 import { useParams } from 'react-router';
+import { BASE_API } from '../../../utils/BASE_URL';
 
 const StudentDetails = () => {
 
@@ -186,7 +187,7 @@ const StudentDetails = () => {
                 <div className={classes.divison_inputs}>
                     <div className={`${classes.row} ${classes.file_row}`}>
                         <div className={classes.file}>
-                            <img src={student.center.school_principal_signature} alt="Principal Signature" />
+                            <img src={`${BASE_API}/${student.center.school_principal_signature}`} alt="Principal Signature" />
                         </div>
                         <div className={classes.left}>Principal Signature</div>
                     </div>
