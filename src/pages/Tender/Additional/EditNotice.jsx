@@ -5,6 +5,7 @@ import useHttp2 from '../../../hooks/useHttp2';
 import classes from './Additional.module.css'
 import Notice_Info from './components/Notice_Info';
 import useHttpForm from '../../../hooks/useHttpForm';
+import { BASE_API } from '../../../utils/BASE_URL';
 
 const EditTender = () => {
 
@@ -60,7 +61,7 @@ const EditTender = () => {
                 uid:'-1',
                 name:'file',
                 status:'done',
-                url:result.data.file
+                url:`${BASE_API}/${result.data.file}`
             }])
         })
     }, [])

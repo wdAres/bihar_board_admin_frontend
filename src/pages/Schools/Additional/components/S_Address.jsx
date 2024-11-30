@@ -23,7 +23,7 @@ const S_Address = () => {
                 { required: true, message: 'School Pincode is required' },
                 { pattern: /^[1-9][0-9]{5}$/, message: 'School Pincode must be a valid 6-digit number' }
             ],
-            element: (data) => <Input {...data} />
+            element: (data) => <Input maxLength={6} {...data} />
         },
         {
             label: 'School Address',
