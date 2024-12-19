@@ -112,7 +112,11 @@ const Schools = () => {
     }, true)
   }
   
-  const columns = schoolColumn((id) => navigate(`edit/${id}`), handleDelete , id=>navigate(`/student/by-center/${id}`))
+  const columns = schoolColumn((id) => navigate(`edit/${id}`), handleDelete ,
+   id=>navigate(`/student/by-center/${id}`),
+   id=>navigate(`/employee/by-center/${id}`),
+   id=>navigate(`/property/by-center/${id}`),
+  )
   
   return (
     <>

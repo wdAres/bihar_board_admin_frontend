@@ -26,6 +26,8 @@ import EditSupport from './pages/Support/Additional/EditSupport'
 import Support from './pages/Support/Support'
 import View from './pages/Students/View'
 import StudentDetails from './pages/Students/Additional/StudentDetails'
+import Employee from './pages/Employee/Employee'
+import Property from './pages/SchoolProperty/Property'
 
 
 const someLinks = ['/login', '/signup', '/forget', '/admin_login/:resetToken']
@@ -90,6 +92,16 @@ function App() {
                 <Route index element={<Support />} />
                 <Route path='/support/view/:id' element={<EditSupport />} />
               </Route>
+              <Route path='/employee'  >
+                <Route index element={<Employee />} />
+                <Route path='/employee/by-center/:id' element={<Employee />} />
+                {/* <Route path='/employee/add' element={<AddEmployee />} /> */}
+              </Route>
+
+              <Route path='/property'  >
+                <Route index element={<Property />} />
+                <Route path='/property/by-center/:id' element={<Property />} />
+                </Route>
             </Routes>
           </LayoutFile>
       }

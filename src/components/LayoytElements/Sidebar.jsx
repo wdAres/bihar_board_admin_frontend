@@ -60,7 +60,20 @@ function Sidebar({ sidebar, handleSidebar }) {
             icon: <TfiAnnouncement size={14} />,
             label: 'Important Links',
             link: '/important-link'
-        }
+        },
+        // {
+        //     key: '05',
+        //     icon: <PiStudent size={14} />,
+        //     label: 'Employee',
+        //     link: '/employee'
+        // },
+        // {
+        //     key: '05',
+        //     icon: <PiStudent size={14} />,
+        //     label: 'School Property',
+        //     link: '/property'
+        // },
+        
     ]
 
     const cssObject = sidebar ? { left: '0' } : {}

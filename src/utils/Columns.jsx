@@ -673,7 +673,7 @@ export const notificationColumns = (handleView) => ([
 //????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????//
 
 
-export const schoolColumn = (handleView,handleDelete,viewStudents) => ([
+export const schoolColumn = (handleView,handleDelete,viewStudents,viewEmployee,viewProperty) => ([
   {
     title: 'School',
     key: 'school',
@@ -704,6 +704,22 @@ export const schoolColumn = (handleView,handleDelete,viewStudents) => ([
     key: 'view_students',
     render: (_, { id }) => (
       <h5 style={{fontSize:14,color:'#ae0000',fontWeight:500,cursor:'pointer'}} onClick={()=>viewStudents(id)}>View</h5>
+    ),
+    align: 'center'
+  },
+  {
+    title: 'View Employee',
+    key: 'view_employee',
+    render: (_, { id }) => (
+      <h5 style={{fontSize:14,color:'#ae0000',fontWeight:500,cursor:'pointer'}} onClick={()=>viewEmployee(id)}>View</h5>
+    ),
+    align: 'center'
+  },
+  {
+    title: 'View Property',
+    key: 'view_property',
+    render: (_, { id }) => (
+      <h5 style={{fontSize:14,color:'#ae0000',fontWeight:500,cursor:'pointer'}} onClick={()=>viewProperty(id)}>View</h5>
     ),
     align: 'center'
   },
@@ -981,3 +997,93 @@ export const supportColumn = (handleView) => ([
     align: 'center',
   }
 ])
+
+
+export const employeeColumns = () => ([
+  {
+    title: 'First Name',
+    key: 'firstName',
+    dataIndex: 'firstName',
+  },
+  {
+    title: 'Last Name',
+    key: 'lastName',
+    dataIndex: 'lastName',
+  },
+  {
+    title: 'Email',
+    key: 'email',
+    dataIndex: 'email',
+  },
+  {
+    title: 'Phone Number',
+    key: 'phoneNumber',
+    dataIndex: 'phoneNumber',
+  },
+  {
+    title: 'Designation',
+    key: 'designation',
+    dataIndex: 'designation',
+  },
+ 
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    render: (_, { createdAt }) => (
+      moment(createdAt).format('DD-MM-YYYY')
+    ),
+    align: 'center'
+  }
+]);
+
+export const schoolPropertyColumns = (handleView, handleDelete, viewStudents, viewEmployee) => ([
+
+  {
+    title: 'Total Benches',
+    key: 'totalBenches',
+    dataIndex: 'totalBenches',
+  },
+  {
+    title: 'Total Classrooms',
+    key: 'totalClassRooms',
+    dataIndex: 'totalClassRooms',
+  },
+  {
+    title: 'Total Guards',
+    key: 'totalGuards',
+    dataIndex: 'totalGuards',
+  },
+  {
+    title: 'Total Desks',
+    key: 'totalDesks',
+    dataIndex: 'totalDesks',
+  },
+  {
+    title: 'Total Chairs',
+    key: 'totalChairs',
+    dataIndex: 'totalChairs',
+  },
+  {
+    title: 'Total Computers',
+    key: 'totalComputers',
+    dataIndex: 'totalComputers',
+  },
+  {
+    title: 'Total Projectors',
+    key: 'totalProjectors',
+    dataIndex: 'totalProjectors',
+  },
+  // {
+  //   title: 'Actions',
+  //   key: 'actions',
+  //   render: (text, record) => (
+  //     <span>
+  //       <Button onClick={() => handleView(record.id)}>View</Button>
+  //       <Button onClick={() => handleDelete(record.id)}>Delete</Button>
+  //       <Button onClick={() => viewStudents(record.id)}>View Students</Button>
+  //       <Button onClick={() => viewEmployee(record.id)}>View Employees</Button>
+  //     </span>
+  //   ),
+  //   align: 'center'
+  // }
+]);
